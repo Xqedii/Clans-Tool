@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Clans Tool</title>
+      <link rel="stylesheet" href="style.css">
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <section>
+         <div class='air air1'></div>
+         <div class='air air2'></div>
+         <div class='air air3'></div>
+         <div class="version" id="version"></div>
+         <div class="container">
+            <div class="header"><b style="font-size: 36px;">Clans Tool</b><br><p style="font-size: 16px;">Created by Xqedii</p></div>
+            <div class="box">
+               <div class="textbox">
+                  <img src="icons/1.svg" alt="Icon" class="icon">
+                  <div>
+                     <div class="title">Start</div>
+                     <div class="subtitle">
+                        Start the system of inviting players via the <b><span id="nickname"></span></b> bot to the <b>RCF</b> clan on the <b><span id="address"></span></b> server.
+                     </div>
+                     <button class="start">Start</button>
+                  </div>
+               </div>
+            </div>
+            <div class="box">
+               <div class="textbox">
+                  <img src="icons/2.svg" alt="Icon" class="icon">
+                  <div>
+                     <div class="title">Change Lobby</div>
+                     <div class="subtitle">Change the bot lobby on the BedWars subserver to send<br> invitations to more people.</div>
+                     <div class="dropdown">
+                        <button class="dropdown-btn" id="dropdownButton">Lobby 2</button>
+                        <div class="dropdown-content" id="dropdownContent">
+                           <a href="#" onclick="changeLobby('Lobby 1')">Lobby 1</a>
+                           <a href="#" onclick="changeLobby('Lobby 2')">Lobby 2</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="box">
+               <div class="textbox">
+                  <img src="icons/5.svg" alt="Icon" class="icon">
+                  <div>
+                     <div class="title">Statistics</div>
+                     <div class="subtitle">See the statistics of the bot that is in Bedwars mode<br> and sends clans invitations.</div>
+                     <div class="statstitle">
+                        Clan Joins: <b><span id="joins"></span></b><br>
+                        Invitations: <b><span id="invites"></span></b><br>
+                        Members: <b><span id="members"></span></b><br>
+                        Messages: <b><span id="messages"></span></b><br>
+                        Time Spent: <b><span id="timespent"></span></b><br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="box">
+               <div class="textbox">
+                  <img src="icons/3.svg" alt="Icon" class="icon">
+                  <div>
+                     <div class="title">Message</div>
+                     <div class="subtitle">A message with informations that will be sent to the clan chat.</div>
+                     <div class="extratitle">Sending in: <b><span id="reqinvites"></span> Invites</b></div>
+                     <div class="progress-container">
+                        <div class="progress-bar"></div>
+                     </div>
+                     <br>
+                     <div class="extratitle">Player count status:</div>
+                     <div class="progress-container">
+                        <div class="progress-bar2"></div>
+                        <div class="progress-text"><span id="online"></span>/<span id="maxonline"></span></div>
+                      </div>
+                  </div>
+               </div>
+            </div>
+            <div class="box">
+               <div class="textbox">
+                  <img src="icons/4.svg" alt="Icon" class="icon">
+                  <div>
+                     <div class="title">Console</div>
+                  </div>
+               </div>
+               <div class="box console-box">
+                  <div class="console-content">
+                     <center>Waiting for start...</center>
+                  </div>
+               </div>
+               <div class="chat-container">
+                  <textarea id="message" class="message-box" placeholder="Send message..."></textarea>
+                  <button id="send-btn" class="send-btn">
+                     <img src="icons/7.svg" alt="Send Icon">
+                   </button>
+              </div>
+            </div>
+            <div class="box">
+               <div class="textbox">
+                  <img src="icons/3.svg" alt="Icon" class="icon">
+                  <div>
+                     <div class="title">Players Online</div>
+                     <div class="subtitle">Check how many people are online on the server in a given period of time.</div>
+                     <br><br>
+                  </div>
+               </div>
+               <div class="textbox">
+                  <canvas id="playersChart"></canvas>
+               </div>
+            </div>
+         </div>
+      </section>
+      
+      <script src="script.js"></script>
+   </body>
+</html>

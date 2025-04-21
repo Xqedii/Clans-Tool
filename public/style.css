@@ -1,0 +1,475 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    outline: unset!important;
+}
+.header {
+    margin-top: 40px;
+    color: white;
+    position: fixed; /* Zmiana z absolute na fixed */
+    top: 0; /* Ustalamy, że nagłówek będzie przyklejony do góry */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 10px;
+    width: 100%; /* Ustalamy, że nagłówek będzie miał pełną szerokość */
+    z-index: 100; /* Aby był na wierzchu innych elementów */
+}
+.version {
+    color: rgb(199, 199, 199);
+    font-size: 12px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    text-align: center;
+    padding: 7px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;  /* Upewnij się, że kontener zajmuje 100% szerokości */
+}
+
+.container > div {
+    width: 20%;
+}
+.container > div:nth-child(5) {
+    width: 30%;
+}
+.start {
+    margin-top: 15px;
+    background-color: #ffa136;
+    color: white;
+    border: none;
+    padding: 7px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+.start:hover {
+    background-color: #ffc336;
+}
+
+.start.clicked {
+    transform: scale(1.1);
+}
+
+.start.disabled {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+.box {
+    width: 100%;  /* Zmiana na 100% zapewnia, że box zajmuje całą dostępną przestrzeń w obrębie kontenera */
+    max-width: 300px;  /* Dodanie max-width ogranicza szerokość */
+    padding: 20px;
+    background-color: #222222;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.consolebox {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    background-color: #222222;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.console-box {
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    font-family: monospace;
+    padding: 15px;
+    border-radius: 10px;
+    overflow-y: auto;
+    margin-top: 20px;
+    min-height: 200px;
+    height: auto;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: #2e2e2e #1e1e1e;
+    box-sizing: border-box;
+}
+
+
+.title {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.consoletitle {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+.consoleicon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    align-self: center;
+}
+.subtitle {
+    color:white;
+    font-size: 0.9em;
+    margin-top: 8px;
+}
+.extratitle {
+    color:white;
+    font-size: 0.9em;
+    margin-top: 8px;
+}
+.statstitle {
+    color: white;
+    margin-top: 8px;
+    border-left: 2px solid #a1a1a1;
+    padding-left: 10px;
+    margin-left: 0px;
+ }
+
+.progress-container {
+    position: relative;
+    margin-top: 12px;
+    width: 90%;
+    height: 20px;
+    background-color: #a1a1a1;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+@keyframes animateGradient {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(rgba(157, 255, 165, 0.4), transparent), 
+                repeating-linear-gradient(135deg, #2ddd2a 0 0.40em, #42ff40 0 1.0em);
+    background-size: 200% 100%;
+    border-radius: 15px;
+    animation: animateGradient 5s linear infinite;
+    transition: width 0.5s ease-in-out;
+}
+.progress-bar2 {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(rgba(203, 157, 255, 0.4), transparent), 
+                repeating-linear-gradient(135deg, #892add 0 0.40em, #a340ff 0 1.0em);
+    background-size: 200% 100%;
+    border-radius: 15px;
+    animation: animateGradient 5s linear infinite;
+    transition: width 0.5s ease-in-out;
+}
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Kolor tekstu */
+    font-size: 14px; /* Rozmiar czcionki */
+    font-weight: bold;
+    z-index: 1; /* Zapewnia, że tekst będzie na wierzchu */
+}
+.console-content {
+    text-align: left;
+    width: 100%;
+    height: 170px;
+    scrollbar-width: thin;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+  }
+  section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to top, #2e2e2e, #3a3a3a);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  section .air{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url("icons/wave.png");
+    background-size: 1000px 100px
+  }
+  section .air.air1{
+    animation: wave 30s linear infinite;
+    z-index: 1000;
+    opacity: 1;
+    animation-delay: 0s;
+    bottom: -20px;
+  }
+  section .air.air2{
+    animation: wave2 15s linear infinite;
+    z-index: 999;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: -10px;
+  }
+  section .air.air3{
+    animation: wave2 5s linear infinite;
+    z-index: 997;
+    opacity: 0.7;
+    animation-delay: -5s;
+    bottom: 0px;
+  }
+  @keyframes wave{
+    0%{
+      background-position-x: 0px; 
+    }
+    100%{
+      background-position-x: 1000px; 
+    }
+  }
+  @keyframes wave2{
+    0%{
+      background-position-x: 0px; 
+    }
+    100%{
+      background-position-x: -1000px; 
+    }
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.dropdown-btn {
+    padding: 7px 20px;
+    background-color: #ffa136;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+.dropdown-btn:hover {
+    background-color: #ffc336;
+}
+
+.dropdown-btn.clicked {
+    transform: scale(1.1);
+}
+
+.dropdown-content {
+    display: none; /* Domyślnie ukryty */
+    position: fixed;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+    border-radius: 5px;
+    transform: translateY(-10px); /* Początkowe przesunięcie */
+    opacity: 0; /* Domyślnie niewidoczny */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1001; /* Zapewniamy, że będzie wyświetlany na wierzchu */
+}
+.dropdown-content.show {
+    display: block; /* Zmieniamy display na block, żeby pojawił się dropdown */
+    opacity: 1;
+    transform: translateY(0); /* Przemieszczamy go na miejsce */
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown-btn.clicked + .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.textbox {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    word-break: break-word; /* Zamiast word-wrap */
+    overflow: hidden; /* Ukrywa wszystko, co wychodzi poza kontener */
+}
+
+#playersChart {
+    width: 100%;
+    height: 100%;  /* Wykres wypełnia cały dostępny kontener */
+    max-width: 100%;
+}
+
+.chat-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+.message-box {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    height: 35px;
+    font-size: 12px;
+    color: #dddddd;
+    border: none;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    resize: none;
+    margin-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #2e2e2e #1e1e1e;
+    box-sizing: border-box;
+}
+
+
+.send-btn {
+    margin-top: 18px;
+    position: relative;
+    padding: 5px 5px;
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: #0ecc13;
+    transition: all 0.2s ease;
+    z-index: 1000;
+    display: flex;           /* Użyj flexboxa */
+    justify-content: center; /* Wyśrodkuj poziomo */
+    align-items: center;     /* Wyśrodkuj pionowo */
+}
+.send-btn img {
+    width: 22px; /* Rozmiar ikony */
+    height: 22px; /* Rozmiar ikony */
+}
+
+.send-btn:hover {
+    background-color: #16d91b;
+}
+.send-btn:active {
+  transform: scale(0.96);
+}
+.send-btn:before,
+.send-btn:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+.send-btn.animate::before {
+    top: -70%;
+    background-image: radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, transparent 20%, #0ecc13 20%, transparent 30%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, #0ecc13 15%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%);
+    background-size: 20% 20%, 30% 30%, 25% 25%, 30% 30%, 28% 28%, 20% 20%, 25% 25%,
+      20% 20%, 28% 28%; /* Zwiększono rozmiar gradientów */
+    animation: greentopBubbles ease-in-out 0.6s forwards infinite;
+  }
+  
+  @keyframes greentopBubbles {
+    0% {
+      background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+        40% 90%, 55% 90%, 70% 90%;
+    }
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+        50% 50%, 65% 20%, 90% 30%;
+    }
+    100% {
+      background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+        50% 40%, 65% 10%, 90% 20%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }
+  
+  .send-btn.animate::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, #0ecc13 15%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%),
+      radial-gradient(circle, #0ecc13 20%, transparent 20%);
+    background-size: 25% 25%, 30% 30%, 28% 28%, 30% 30%, 25% 25%, 30% 30%, 28% 28%; /* Zwiększono rozmiar gradientów */
+    animation: greenbottomBubbles ease-in-out 0.6s forwards infinite;
+  }
+  
+  @keyframes greenbottomBubbles {
+    0% {
+      background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+        70% -10%, 70% 0%;
+    }
+    50% {
+      background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+        105% 0%;
+    }
+    100% {
+      background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+        110% 10%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }
+  
