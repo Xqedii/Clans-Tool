@@ -82,7 +82,7 @@ function WebVariables() {
                 }
             })
             .catch(error => {
-                console.error(`Błąd przy pobieraniu danych z ${endpoint.url}:`, error);
+                console.error(`Błąd pobierania danych z ${endpoint.url}:`, error);
         });
     });
 }
